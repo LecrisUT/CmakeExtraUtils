@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cmake: [ "3.20", "latest", "latestrc" ]
+        cmake: [ "3.25", "latest", "latestrc" ]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,10 +34,8 @@ jobs:
           cmakeVersion: ${{ matrix.cmake }}
       - name: Build and test native CMake
         run: |
-          # Not running presets because of minimum CMake version being tested
-          cmake -B ./build
-          ctest --test-dir ./build --output-on-failure
-          echo "CMakeExtraUtils_ROOT=$(pwd)/build" >> $GITHUB_ENV
+          cmake --workflow --preset default --fresh
+          echo "CMakeExtraUtils_ROOT=$(pwd)/cmake-build-release" >> $GITHUB_ENV
       # TODO: This will be migrated to standalone actions
       - name: Run tmt tests
         uses: LecrisUT/tmt-actions/run-tmt@v1

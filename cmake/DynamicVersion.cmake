@@ -10,13 +10,9 @@ Helper module to get the project's version dynamically. Format is compatible wit
 
 ]===]
 
+cmake_minimum_required(VERSION 3.25...3.30)
 include_guard()
 list(APPEND CMAKE_MESSAGE_CONTEXT DynamicVersion)
-if (POLICY CMP0140)
-    # Enable using return(PROPAGATE)
-    # TODO: Remove when cmake 3.25 is commonly distributed
-    cmake_policy(SET CMP0140 NEW)
-endif ()
 
 #[==============================================================================================[
 #                                         Preparations                                         #
@@ -327,16 +323,6 @@ function(dynamic_version)
     message(VERBOSE
             "Calculated version = ${${ARGS_OUTPUT_VERSION}}"
     )
-
-    if (CMAKE_VERSION VERSION_LESS 3.25)
-        # TODO: Remove when cmake 3.25 is commonly distributed
-        set(${ARGS_OUTPUT_DESCRIBE} ${${ARGS_OUTPUT_DESCRIBE}} PARENT_SCOPE)
-        set(${ARGS_OUTPUT_VERSION} ${${ARGS_OUTPUT_VERSION}} PARENT_SCOPE)
-        set(${ARGS_OUTPUT_VERSION_FULL} ${${ARGS_OUTPUT_VERSION_FULL}} PARENT_SCOPE)
-        set(${ARGS_OUTPUT_COMMIT} ${${ARGS_OUTPUT_COMMIT}} PARENT_SCOPE)
-        set(${ARGS_OUTPUT_DISTANCE} ${${ARGS_OUTPUT_DISTANCE}} PARENT_SCOPE)
-        set(${ARGS_OUTPUT_SHORT_HASH} ${${ARGS_OUTPUT_SHORT_HASH}} PARENT_SCOPE)
-    endif ()
     return(PROPAGATE
             ${ARGS_OUTPUT_DESCRIBE}
             ${ARGS_OUTPUT_VERSION}

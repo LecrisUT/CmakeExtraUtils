@@ -6,6 +6,7 @@
 #
 #
 
+cmake_minimum_required(VERSION 3.25...3.30)
 list(APPEND CMAKE_MESSAGE_CONTEXT PackageComps)
 
 # TODO: Move these to functions with minimal macro that actually does the `include()`
