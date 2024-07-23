@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cmake: ["3.20", "latest", "latestrc"]
+        cmake: [ "3.20", "latest", "latestrc" ]
     steps:
       - uses: actions/checkout@v4
         with:

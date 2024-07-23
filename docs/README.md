@@ -35,5 +35,7 @@ markdown files in [`cmake_modules`](cmake_modules) folder, e.g. [`DynamicVersion
 Other personal standards applied:
 
 - Use markdown file format only
-- Use [colon-fence](https://myst-parser.readthedocs.io/en/v1.0.0/syntax/optional.html#code-fences-using-colons) `:::` instead of triple-tick ```` ``` ````
-- Use [yaml](https://myst-parser.readthedocs.io/en/v1.0.0/configuration.html#frontmatter-local-configuration) for directive configurations
+- Use [colon-fence](https://myst-parser.readthedocs.io/en/v1.0.0/syntax/optional.html#code-fences-using-colons) `::`
+  instead of triple-tick \`\`\`
+- Use [yaml](https://myst-parser.readthedocs.io/en/v1.0.0/configuration.html#frontmatter-local-configuration) for
+  directive configurations
