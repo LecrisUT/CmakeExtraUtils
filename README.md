@@ -1,9 +1,11 @@
 # CMakeExtraUtils
 
+<!-- SPHINX-START -->
+
 Extra utilities for cmake:
 
-- [`DynamicVersion`](cmake/DynamicVersion.md)
-- [`PackageComps`](cmake/PackageComps.md)
+- [`DynamicVersion`]
+- [`PackageComps`]
 
 ## Installation
 
@@ -39,6 +41,8 @@ project(MyProject
         VERSION ${PROJECT_VERSION})
 ```
 
+<!-- SPHINX-END -->
+
 ## TODO for v1.0
 
 - [x] Automation:
@@ -47,3 +51,6 @@ project(MyProject
 - [ ] Test coverage:
   - [x] `DynamicVersion`
   - [ ] `PackageComps`
+
+[`dynamicversion`]: cmake/DynamicVersion.md
+[`packagecomps`]: cmake/PackageComps.md
