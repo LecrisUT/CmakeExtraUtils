@@ -1,5 +1,7 @@
 # [`PackageComps.cmake`](PackageComps.cmake)
 
+<!-- SPHINX-START -->
+
 Export and import targets as individual components. Special components `shared` and `static`
 
 ## Example
@@ -54,3 +56,5 @@ project(Downstream_Project)
 
 find_package(My_Project COMPONENTS my_component)
 ```
+
+<!-- SPHINX-END -->

@@ -1,5 +1,7 @@
 # [`DynamicVersion.cmake`](DynamicVersion.cmake)
 
+<!-- SPHINX-START -->
+
 Calculate the project version from the git tags or `.git_archival.txt` if the source is not a git repository
 
 ## Example
@@ -27,3 +29,5 @@ add_dependencies(version_lib My_Project_Version)
 set_property(SOURCE version.cpp.in APPEND PROPERTY
 		OBJECT_DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/.version)
 ```
+
+<!-- SPHINX-END -->
