@@ -36,10 +36,6 @@ jobs:
   report:
     name: Report JUnit
     needs: [ tests ]
-    permissions:
-      contents: read
-      checks: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Download test results
@@ -51,4 +47,6 @@ jobs:
           large_files: true
           report_individual_runs: true
           report_suite_logs: any
+          comment_mode: off
+          check_run: false
     if: always()
