@@ -1,5 +1,6 @@
 # PackageComps
 
 ```{include} ../../cmake/PackageComps.md
-: start-after: "# [`PackageComps.cmake`](PackageComps.cmake)"
+:start-after: <!-- SPHINX-START -->
+:end-before: <!-- SPHINX-END -->
 ```

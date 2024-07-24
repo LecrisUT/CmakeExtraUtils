@@ -1,5 +1,6 @@
 # DynamicVersion
 
 ```{include} ../../cmake/DynamicVersion.md
-: start-after: "# [`DynamicVersion.cmake`](DynamicVersion.cmake)"
+:start-after: <!-- SPHINX-START -->
+:end-before: <!-- SPHINX-END -->
 ```

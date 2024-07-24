@@ -1,6 +1,3 @@
-name: test
-run-name: Run tests
-
 on:
   workflow_call:
 
@@ -16,17 +13,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cmake: ["3.20", "latest", "latestrc"]
+        cmake: [ "3.25", "latest", "latestrc" ]
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # Note: Proper solution is: https://github.com/actions/runner/issues/2033#issuecomment-1598547465
-      - name: Temporary fix for git permissions
-        run: |
-          git config --global --add safe.directory "*"
-          git config --global user.email "bot@github.com"
-          git config --global user.name "GitHub Actions Bot"
       - name: Setup tmt
         uses: LecrisUT/tmt-actions/setup-tmt@v1
       - uses: lukka/get-cmake@latest
@@ -34,10 +25,8 @@ jobs:
           cmakeVersion: ${{ matrix.cmake }}
       - name: Build and test native CMake
         run: |
-          # Not running presets because of minimum CMake version being tested
-          cmake -B ./build
-          ctest --test-dir ./build --output-on-failure
-          echo "CMakeExtraUtils_ROOT=$(pwd)/build" >> $GITHUB_ENV
+          cmake --workflow --preset default --fresh
+          echo "CMakeExtraUtils_ROOT=$(pwd)/cmake-build-release" >> $GITHUB_ENV
       # TODO: This will be migrated to standalone actions
       - name: Run tmt tests
         uses: LecrisUT/tmt-actions/run-tmt@v1
@@ -47,10 +36,6 @@ jobs:
   report:
     name: Report JUnit
     needs: [ tests ]
-    permissions:
-      contents: read
-      checks: write
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Download test results
@@ -62,4 +47,6 @@ jobs:
           large_files: true
           report_individual_runs: true
           report_suite_logs: any
+          comment_mode: off
+          check_run: false
     if: always()

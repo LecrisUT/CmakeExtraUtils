@@ -1,6 +1,3 @@
-name: docs
-run-name: Run documentation tests
-
 on:
   workflow_call:
 
