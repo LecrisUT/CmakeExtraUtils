@@ -1,5 +1,5 @@
-name: release
-run-name: Release
+name: 🚀 Release
+run-name: Release ${{ github.ref_name }}
 
 on:
   push:
@@ -13,22 +13,15 @@ on:
         required: true
 
 jobs:
-  # TODO: tests and docs are not aligned when called from workflow_dispatch :/
-  pre-commit:
-    uses: ./.github/workflows/step_pre-commit.yaml
   tests:
-    needs: [ pre-commit ]
     uses: ./.github/workflows/step_test.yaml
     permissions:
       contents: read
       checks: write
       pull-requests: write
-  docs:
-    needs: [ pre-commit ]
-    uses: ./.github/workflows/step_docs.yaml
 
   release:
-    needs: [ tests, docs ]
+    needs: [ tests ]
     name: Create release
     runs-on: ubuntu-latest
     permissions:
